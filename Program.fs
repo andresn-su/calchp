@@ -43,5 +43,17 @@ let rec run opt =
         printfn "This value is not avaiable"
         run opt
 
-// Print the result
-printfn "%i" (run select)
+// Question if the user wants to continue
+let rec play n =
+    printfn "%i" (run select)
+    printfn "Type 1 to continue..."
+    let again = System.Console.ReadLine()
+    match again with
+        | "1" ->
+            play n
+        | _ ->
+            printfn "Program finished..."
+            System.Console.ReadLine()
+
+// Start program
+ignore (play 0)
